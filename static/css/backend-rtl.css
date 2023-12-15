@@ -1,0 +1,10 @@
+/* 
+    Created on : May 31, 2019, 9:48:36 AM
+    Author     : Tarek K. Ajaj
+*/
+@media (max-width: 991px) {
+  .navbar-custom-menu.pull-left > .navbar-nav > li > .dropdown-menu {
+    right: 5%;
+    left: auto; } }
+
+/*# sourceMappingURL=backend-rtl.css.map */

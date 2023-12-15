@@ -1,0 +1,1 @@
+<h2>DYNAMIC page</h2>

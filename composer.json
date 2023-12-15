@@ -1,0 +1,100 @@
+{
+  "name": "yiisoft/yii2-app-advanced",
+  "description": "Yii 2 Advanced Project Template",
+  "keywords": [
+    "yii2",
+    "framework",
+    "advanced",
+    "project template"
+  ],
+  "homepage": "http://www.yiiframework.com/",
+  "type": "project",
+  "license": "BSD-3-Clause",
+  "support": {
+    "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+    "forum": "http://www.yiiframework.com/forum/",
+    "wiki": "http://www.yiiframework.com/wiki/",
+    "irc": "irc://irc.freenode.net/yii",
+    "source": "https://github.com/yiisoft/yii2"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=5.5.0",
+    "yiisoft/yii2": "~2.0.6",
+    "yiisoft/yii2-bootstrap": "~2.0.0",
+    "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
+    "yii-dream-team/yii2-upload-behavior": "*",
+    "dmstr/yii2-adminlte-asset": "^2.1",
+    "tarekajaj/yii2-multilingual": "^1.0",
+    "kartik-v/yii2-widget-select2": "^2.1",
+    "kartik-v/yii2-widget-datepicker": "^1.4",
+    "kartik-v/yii2-widget-depdrop": "^1.0",
+    "pigochu/yii2-jquery-locationpicker": "^0.2.5",
+    "2amigos/yii2-google-maps-library": "^1.1",
+    "edofre/yii2-marker-clusterer": "^1.0",
+    "bower-asset/moment": "^2.24",
+    "bower-asset/bootstrap-datepicker": "^1.8",
+    "bower-asset/bootstrap-daterangepicker": "^3.0",
+    "tarekajaj/yii2-translate-manager": "^1.8",
+    "phpoffice/phpspreadsheet": "^1.6",
+    "yiisoft/yii2-queue": "^2.2",
+    "bower-asset/jquery-slimscroll": "^1.3",
+    "kartik-v/yii2-password": "1.5.4",
+    "giggsey/libphonenumber-for-php": "^8.13",
+    "kartik-v/yii2-widget-datetimepicker": "*",
+    "2amigos/yii2-ckeditor-widget": "^2.2",
+    "masterexploder/phpthumb": "dev-master",
+    "kartik-v/yii2-mpdf": "^1.0",
+    "kartik-v/yii2-field-range": "*",
+    "npm-asset/chart.js": "^3.7",
+    "npm-asset/chartjs-plugin-datalabels": "^2.0",
+    "npm-asset/chartjs-plugin-annotation": "^1.4",
+    "npm-asset/jquery-timepicker": "^1.3",
+    "chillerlan/php-qrcode": "^4.3",
+    "ext-curl": "*",
+    "borales/yii2-phone-input": "*",
+    "akavov/yii2-countries": "*",
+    "wbraganca/yii2-dynamicform": "*",
+    "lavrentiev/yii2-toastr": "^2.0",
+    "kartik-v/yii2-widget-switchinput": "dev-master",
+    "diggindata/yii2-signaturepad": "@dev"
+  },
+  "require-dev": {
+    "yiisoft/yii2-debug": "~2.0.0",
+    "yiisoft/yii2-gii": "~2.0.0",
+    "yiisoft/yii2-faker": "~2.0.0",
+    "codeception/base": "^2.2.3",
+    "codeception/verify": "~0.3.1"
+  },
+  "config": {
+    "process-timeout": 1800,
+    "fxp-asset": {
+      "enabled": false
+    },
+    "github-protocols": [
+      "https"
+    ],
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    }
+  },
+  "repositories": {
+    "tarek": {
+      "url": "https://github.com/tarekajaj/yii2-translate-manager",
+      "type": "git"
+    },
+    "tarek-multilingual": {
+      "url": "https://github.com/tarekajaj/yii2-multilingual",
+      "type": "git"
+    },
+    "asset-packagist.org": {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    },
+    "packagist.org": {
+      "type": "composer",
+      "url": "https://packagist.org"
+    }
+  }
+}

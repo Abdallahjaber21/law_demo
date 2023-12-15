@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA;;;EAGE;AAIF,yBAAyB;EACvB,iEAA4D;IAC1D,KAAK,EAAE,EAAE;IACT,IAAI,EAAE,IAAI",
+"sources": ["../scss/backend-rtl.scss"],
+"names": [],
+"file": "backend-rtl.css"
+}

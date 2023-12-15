@@ -1,0 +1,28 @@
+/* 
+    Created on : Jan 28, 2019, 4:25:30 PM
+    Author     : Tarek K. Ajaj
+*/
+.login-logo img {
+  height: auto;
+  width: 100%;
+  padding: 30px; }
+
+.login-box{
+  z-index: 20;
+  position: relative;}
+  .login-box .language-switcher-links ul {
+    padding: 0;
+    margin-top: 5px; }
+  .login-box .site-error .error-panel {
+    width: 100%;
+    margin: 0; }
+    .login-box .site-error .error-panel h1 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 135px;
+      font-weight: 700;
+      margin: 0px;
+      color: #262626;
+      text-transform: uppercase;
+      text-align: center; }
+
+/*# sourceMappingURL=login.css.map */

@@ -1,0 +1,94 @@
+.help-block {
+  min-height: 0px;
+}
+.swiper-container{
+  width: 100%;
+}
+.swiper-container .swiper-slide{
+  width: auto;
+}
+.wizard-card .choice{
+  margin-top: 0;
+  display: inline-block;
+}
+.wizard-card .choice .icon {
+  text-align: center;
+  vertical-align: middle;
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  background-color: #999999;
+  color: #FFFFFF;
+  margin: 0 auto 20px;
+  border: 2px solid #CCCCCC;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-bottom: 0;
+}
+.wizard-card .choice{
+  margin-top: 0;
+  display: inline-block;
+}
+.wizard-card .choice.wide-choise .icon{  
+  padding: 0 10px;
+  width: auto;
+  border-radius: 18px;
+}  
+.wizard-card[data-color="green"] .choice.active .icon {
+  border-color: #05AE0E;
+  background: #05AE0E;
+}
+.wizard-card .choice i{
+  font-size: 14px;
+}
+.wizard-card{
+  position:relative;
+}
+.wizard-card .wizard-loader{
+  z-index: 999;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+}
+.box-header.with-border{
+  display: none;
+}
+.peruser-permonth {
+  display: inline-block;
+  text-align: left; }
+
+.price-peruser-permonth {
+  font-size: 40px;
+  color: #5a5a5a;
+  word-spacing: -10px;
+  display: inline-block; }
+  .price-peruser-permonth.small {
+    font-size: 20px;
+    margin: 0;
+    word-spacing: 0px;
+    display: block; }
+  .price-peruser-permonth .num-users {
+    display: block;
+    word-spacing: 0; }
+
+.price-peruser-permonth strong {
+  font-size: 1.6em; }
+
+.peruser-permonth small {
+  display: block; }
