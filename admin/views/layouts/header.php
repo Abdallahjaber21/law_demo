@@ -24,7 +24,7 @@ use yii\web\View;
     <?=
         Html::a(
             '<span class="logo-mini">' . Html::img(Yii::getAlias("@staticWeb/images/logo-square.svg"), ['height' => '35px']) . '</span>'
-            . '<span class="logo-lg">' . Html::img(Yii::getAlias("@staticWeb/images/logo.svg"), ['height' => '35px']) . '</span>',
+            . '<span class="logo-lg">' . Html::img(Yii::getAlias("@staticWeb/images/logo.png"), ['height' => '35px']) . '</span>',
             Yii::$app->homeUrl,
             ['class' => 'logo hidden-xs']
         )
@@ -38,7 +38,7 @@ use yii\web\View;
 
         <?=
             Html::a(
-                '<span class="logo-lg visible-xs-inline">' . Html::img(Yii::getAlias("@staticWeb/images/logo.svg"), ['height' => '35px']) . '</span>',
+                '<span class="logo-lg visible-xs-inline">' . Html::img(Yii::getAlias("@staticWeb/images/logo.png"), ['height' => '35px']) . '</span>',
                 Yii::$app->homeUrl,
                 ['class' => 'logo visible-xs-inline hidden']
             )
@@ -50,51 +50,6 @@ use yii\web\View;
                 ])
                 ?>
             <div class="user_info_custom_menu">
-                <a href="javascript://" class="searchButton fasearch" title="Search (ctrl + / )"><i class="searchButton">
-                        <?= FA::i(FA::_SEARCH) ?>
-                    </i></a>
-                <?php Modal::begin([
-                    'header' => '<h1>Search an asset:</h1>',
-                    'id' => 'searchSection',
-                    'footer' => '<a type="button" class="btn btn-success" id="search_btn">Search</a>' .
-                        '<button type="button" class="btn btn-danger close-btn closeSearch" data-dismiss="modal">Close</button>',
-                    'class' => 'location_equipment_modal',
-                    'options' => [
-                        'data-backdrop' => 'static',
-                    ],
-                ]);
-
-                echo '<div class="row">';
-                echo '<div class="input-group">';
-                echo '<span class="input-group-addon"><i class="fa">' . FA::i(FA::_SEARCH)
-                    .
-                    '</i></span>';
-                echo '<input type="text" id="searchInput" name="query" class="form-control"
-                        placeholder="Search by code, equipment ca values, path, meter type, ...">';
-                echo '</div>';
-                echo '</div>';
-                echo '<div class="modal-body">';
-                echo '</div>';
-
-                Modal::end();
-                ?>
-                <div class="user_info">
-                    <?php
-                    $assignment_model = new AssignmentForm(Yii::$app->user->id);
-                    $user_division = @Division::findOne(@Account::getAdminDivisionID())->name;
-                    $user_main_sector = @MainSector::findOne(@Account::getAdminMainSectorId())->name;
-                    ?>
-
-                    <span>
-                        <?= strtoupper($assignment_model->roles[0]) ?>
-                    </span>
-                    <span>
-                        <?= !empty($user_division) ? '-' . $user_division : '' ?>
-                    </span>
-                    <span>
-                        <?= !empty($user_main_sector) ? '-' . $user_main_sector : '' ?>
-                    </span>
-                </div>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <li id="menu_container" class="dropdown notifications-menu">

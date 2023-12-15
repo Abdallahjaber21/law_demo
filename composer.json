@@ -58,7 +58,10 @@
     "wbraganca/yii2-dynamicform": "*",
     "lavrentiev/yii2-toastr": "^2.0",
     "kartik-v/yii2-widget-switchinput": "dev-master",
-    "diggindata/yii2-signaturepad": "@dev"
+    "diggindata/yii2-signaturepad": "@dev",
+    "enyo/dropzone": "^5.9",
+    "php-ai/php-ml": "^0.9.0",
+    "smalot/pdfparser": "^2.7"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "~2.0.0",

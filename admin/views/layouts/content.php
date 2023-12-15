@@ -2,11 +2,14 @@
 
 use yii\widgets\Breadcrumbs;
 use dmstr\widgets\Alert;
+
 ?>
 <div class="content-wrapper">
   <section class="content-header">
     <?php if (isset($this->blocks['content-header'])) { ?>
-      <h1><?= $this->blocks['content-header'] ?></h1>
+      <h1>
+        <?= $this->blocks['content-header'] ?>
+      </h1>
     <?php } else { ?>
       <h1>
         <?php
@@ -23,12 +26,12 @@ use dmstr\widgets\Alert;
     <?php } ?>
 
     <?=
-    Breadcrumbs::widget(
-      [
-        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-      ]
-    )
-    ?>
+      Breadcrumbs::widget(
+        [
+          'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]
+      )
+      ?>
   </section>
 
   <section class="content">
@@ -40,11 +43,14 @@ use dmstr\widgets\Alert;
 
 <footer class="main-footer">
   <div class="pull-right hidden-xs">
-    <b><?= \Yii::t("app", "Version") ?></b> 1.0
+    <b>
+      <?= \Yii::t("app", "Version") ?>
+    </b> 1.0
   </div>
   <strong>
-    <?= \Yii::t("app", "Powered by {company}.", ['company' => '<a href="https://bitminds.ai">Bitminds</a>']) ?>
-  </strong> <?= \Yii::t("app", "&copy; {date} All rights reserved.", ['date' => date("Y")]) ?>
+    <?= \Yii::t("app", "Powered by {company}.", ['company' => '<a href="https://mavenlb.com">Mavenlb</a>']) ?>
+  </strong>
+  <?= \Yii::t("app", "&copy; {date} All rights reserved.", ['date' => date("Y")]) ?>
 </footer>
 
 <?php if (false) { ?>
