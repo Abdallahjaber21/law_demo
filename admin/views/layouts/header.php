@@ -23,8 +23,8 @@ use yii\web\View;
 
     <?=
         Html::a(
-            '<span class="logo-mini">' . Html::img(Yii::getAlias("@staticWeb/images/logo-square.svg"), ['height' => '35px']) . '</span>'
-            . '<span class="logo-lg">' . Html::img(Yii::getAlias("@staticWeb/images/logo.png"), ['height' => '35px']) . '</span>',
+            // '<span class="logo-mini">' . Html::img(Yii::getAlias("@staticWeb/images/logo-square.svg"), ['height' => '35px']) . '</span>'
+            '<span class="logo-lg">' . Html::img(Yii::getAlias("@staticWeb/images/logo.png"), ['height' => '35px']) . '</span>',
             Yii::$app->homeUrl,
             ['class' => 'logo hidden-xs']
         )

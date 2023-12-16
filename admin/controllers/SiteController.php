@@ -3,12 +3,20 @@
 namespace admin\controllers;
 
 use common\config\includes\P;
+use common\data\Countries;
+use common\models\Account;
+use common\models\Admin;
+use common\models\LoginAudit;
+use common\models\users\forms\AbstractLoginForm;
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\Json;
 use yii\web\UploadedFile;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\Response;
+use yii\httpclient\Client;
+use \Smalot\PdfParser\Parser;
 
 /**
  * Site controller
@@ -111,6 +119,53 @@ class SiteController extends Controller
 
     public function actionPdfGpt($pdf_path)
     {
+
+        if ($this->request->isPost) {
+            print_r(Yii::$app->request->post());
+            exit;
+
+            $userQuestion = "What is this pdf about?";
+
+            $encoding = 'UTF-8'; // Adjust based on your needs
+            mb_internal_encoding($encoding);
+
+            $parser = new Parser();
+
+            $pdf = $parser->parseFile($pdf_path);
+
+            $pdfText = $pdf->getText();
+
+            // print_r($pdfText);
+            // exit;
+            // Make a request to the Flask API
+            $client = new Client();
+            $response = $client->createRequest()
+                ->setMethod('POST')
+                ->setUrl('http://127.0.0.1:5000/')
+                ->addHeaders(['Content-Type' => 'application/json'])  // Set the content type to JSON
+                ->setContent(json_encode([
+                    'pdf_text' => $pdfText,
+                    'user_question' => $userQuestion,
+                ]))
+                ->send();
+
+            if ($response->isOk) {
+                $data = $response->getData();
+                $answer = $data['answer'];
+
+                print_r($answer);
+                exit;
+
+                // Process the answer as needed
+                // ...
+
+                // Return the answer to the view
+                return $this->render('result', ['answer' => $answer]);
+            } else {
+                print_r($response->content);
+                exit;
+            }
+        }
         return $this->render('pdf-gpt', [
             'path' => $pdf_path
         ]);
@@ -145,4 +200,76 @@ class SiteController extends Controller
         return json_encode(['success' => false, 'error' => 'Invalid request.']);
     }
 
+    public function actionLogin()
+    {
+        $this->layout = "main-login";
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new AbstractLoginForm();
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->UserClass = Admin::class;
+
+            if ($model->login()) {
+
+                // Login Success
+                LoginAudit::logIp(LoginAudit::LOGIN_SUCCESS, Yii::$app->user->id, true, $model->email, null);
+                // Log The IP END
+
+                return $this->goBack();
+            } else {
+                LoginAudit::logIp(LoginAudit::LOGIN_DENIED, null, true, $model->email, null);
+                return $this->render('login', [
+                    'model' => $model,
+                ]);
+            }
+        } else {
+            $model->password = '';
+
+            return $this->render('login', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Logout action.
+     *
+     * @return string
+     */
+    public function actionLogout()
+    {
+        LoginAudit::logIp(null, Yii::$app->user->id, false, null, null);
+        Yii::$app->user->logout();
+
+
+        return $this->goHome();
+    }
+
+    public function actionProfile()
+    {
+        $model = Yii::$app->user->identity;
+        if (!empty($model)) {
+            if ($model->load(Yii::$app->request->post())) {
+                $post = Yii::$app->request->post('Admin');
+
+                if (Account::validateNumber($model->phone_number, $model->country)) {
+                    // $model->image = 'user-default.jpg';  
+                    // $model->random_token = '';
+                    if ($model->save()) {
+
+                        Yii::$app->getSession()->addFlash("success", Yii::t("app", "Profile updated successfully"));
+                        return $this->redirect(['profile']);
+                    }
+                } else {
+                    Yii::$app->getSession()->addFlash("error", $model->phone_number . ' is not a valid number for: ' . Countries::getCountryName(Account::GetCountryName($model->phone_number)));
+                }
+            }
+        }
+        return $this->render('edit-profile', [
+            'model' => $model,
+        ]);
+    }
 }

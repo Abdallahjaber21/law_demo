@@ -1534,3 +1534,94 @@ th.minus-header {
 .no-hover-bg:hover {
   background-color: rgba(0, 0, 0, 0.492) !important;
 }
+
+.chat-page {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+  color: #fff;
+  height: 80vh;
+  display: flex;
+}
+
+#chat-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 90%;
+  margin: auto;
+  border: 1px solid #555;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #444;
+}
+
+#messages {
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  width: fit-content;
+  max-width: 100%;
+  overflow: hidden;
+  line-break: anywhere;
+}
+
+.user-message {
+  background-color: #717171;
+  margin-left: auto;
+}
+
+.ai-message {
+  background-color: #448e49;
+}
+
+#user-input-container {
+  display: flex;
+  background-color: #444;
+  border-top: 1px solid #555;
+  margin-top: auto;
+}
+
+#user-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  border-radius: 0;
+  background-color: #555;
+  color: #fff;
+}
+
+#send-button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-top-right-radius: 8px;
+  font-size: 16px;
+}
+
+#send-button:hover {
+  background-color: #45a049;
+}
+
+#thinking-icon {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+/* Add this style to show the thinking icon during processing */
+.processing #thinking-icon {
+  display: inline;
+}

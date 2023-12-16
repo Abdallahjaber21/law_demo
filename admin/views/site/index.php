@@ -48,7 +48,7 @@ DropZoneAsset::register($this);
             someparams: "test"
         },
         paramName: "file", // The name that will be used to transfer the file
-        maxFilesize: 2, // MB
+        maxFilesize: 5, // MB
         addRemoveLinks: true,
         maxFiles: 1,
         init: function () {
