@@ -22,7 +22,8 @@ DropZoneAsset::register($this);
                     <div class="dz-size" data-dz-size></div>
                     <img data-dz-thumbnail />
                 </div>
-                <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+                <div class="dz-progress d-none" id="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span>
+                </div>
                 <div class="dz-success-mark"><span>✔</span></div>
                 <div class="dz-error-mark"><span>✘</span></div>
                 <div class="dz-error-message"><span data-dz-errormessage></span></div>
@@ -48,13 +49,14 @@ DropZoneAsset::register($this);
             someparams: "test"
         },
         paramName: "file", // The name that will be used to transfer the file
-        maxFilesize: 5, // MB
+        maxFilesize: 500, // MB
         addRemoveLinks: true,
         maxFiles: 1,
         init: function () {
             // Event for when a file is added
             this.on("addedfile", function (file) {
                 console.log('File added:', file);
+                $("#dz-progress").removeClass("d-none");
             });
 
             // Event for when the upload is complete
@@ -76,6 +78,7 @@ DropZoneAsset::register($this);
                 console.log('File removed:', file);
 
                 if (this.files[0] == undefined) {
+                    $("#dz-progress").addClass("d-none");
                     $("#continue_btn").addClass("d-none");
                     $("#continue_btn").attr("href", "<?= Url::to(['site/pdf-gpt']) ?>");
                 }

@@ -1683,13 +1683,39 @@ th.minus-header {
   background-color: #45a049;
 }
 
-#thinking-icon {
-  font-size: 20px;
-  margin-right: 10px;
-  // display: none;
+.message {
+  &.blink {
+    position: relative;
+    height: 30px;
+    width: 30px;
+    &::after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border-radius: 100vmax;
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      animation: pulse 1s infinite;
+    }
+  }
 }
 
-/* Add this style to show the thinking icon during processing */
-.processing #thinking-icon {
-  display: inline;
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.6;
+  }
 }

@@ -121,53 +121,44 @@ class SiteController extends Controller
     {
 
         if ($this->request->isPost) {
-            print_r(Yii::$app->request->post());
-            exit;
+            $post = Yii::$app->request->post();
 
-            $userQuestion = "What is this pdf about?";
+            $userQuestion = $post['user_question'];
+            $pdfText = $post['pdf_text'];
 
-            $encoding = 'UTF-8'; // Adjust based on your needs
-            mb_internal_encoding($encoding);
+            // Divide PDF text into chunks
+            $chunkSize = 1000; // Adjust the chunk size as needed
+            $pdfChunks = str_split($pdfText, $chunkSize);
 
-            $parser = new Parser();
-
-            $pdf = $parser->parseFile($pdf_path);
-
-            $pdfText = $pdf->getText();
-
-            // print_r($pdfText);
-            // exit;
             // Make a request to the Flask API
             $client = new Client();
-            $response = $client->createRequest()
-                ->setMethod('POST')
-                ->setUrl('http://127.0.0.1:5000/')
-                ->addHeaders(['Content-Type' => 'application/json'])  // Set the content type to JSON
-                ->setContent(json_encode([
-                    'pdf_text' => $pdfText,
-                    'user_question' => $userQuestion,
-                ]))
-                ->send();
 
-            if ($response->isOk) {
-                $data = $response->getData();
-                $answer = $data['answer'];
+            // Loop through each chunk and send it to the Python script
+            foreach ($pdfChunks as $chunk) {
+                $response = $client->createRequest()
+                    ->setMethod('POST')
+                    ->setUrl('http://127.0.0.1:5000/')
+                    ->addHeaders(['Content-Type' => 'application/json'])  // Set the content type to JSON
+                    ->setContent(json_encode([
+                        'pdf_text' => $chunk,
+                        'user_question' => $userQuestion,
+                    ]))
+                    ->send();
 
-                print_r($answer);
-                exit;
+                if ($response->isOk) {
+                    $data = $response->getData();
+                    $answer = $data['answer'];
 
-                // Process the answer as needed
-                // ...
-
-                // Return the answer to the view
-                return $this->render('result', ['answer' => $answer]);
-            } else {
-                print_r($response->content);
-                exit;
+                    print_r($answer);
+                    exit;
+                    // Process the answer as needed
+                    // ...
+                }
             }
+
         }
         return $this->render('pdf-gpt', [
-            'path' => $pdf_path
+            'pdf_path' => $pdf_path
         ]);
     }
 

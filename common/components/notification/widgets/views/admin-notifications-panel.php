@@ -123,11 +123,11 @@ use yii\web\View;
     });
   }
 
-  $x = setInterval(() => {
-    refreshNotifications();
+  // $x = setInterval(() => {
+  //   refreshNotifications();
 
-    // clearInterval($x);
-  }, 5000);
+  //   // clearInterval($x);
+  // }, 5000);
 
   <?php $js = ob_get_clean(); ?>
   <?php $this->registerJs($js); ?>
