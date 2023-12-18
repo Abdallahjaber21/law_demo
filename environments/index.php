@@ -61,4 +61,19 @@ return [
             'admin/config/main-local.php',
         ],
     ],
+    'Demo' => [
+        'path' => 'demo',
+        'setWritable' => [
+            'admin/runtime',
+            'admin/web/assets',
+            'api/runtime',
+            'technician/runtime',
+        ],
+        'setExecutable' => [
+            'yii',
+        ],
+        'setCookieValidationKey' => [
+            'admin/config/main-local.php',
+        ],
+    ],
 ];
